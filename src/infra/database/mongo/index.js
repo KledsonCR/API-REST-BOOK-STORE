@@ -1,14 +1,17 @@
 const mongoose = require('mongoose');
-const config = require('../../../config/config');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 class Database {
   constructor() {
     this.connect();
   }
   connect() {
-    return mongoose.connect(
-      `mongodb+srv://${config.database.username}:${config.database.password}@cluster0.bvnmvyk.mongodb.net/?retryWrites=true&w=majority`
-    );
+    return mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
   }
   disconnect() {
     return mongoose.connection.close();
