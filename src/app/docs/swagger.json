@@ -1,0 +1,411 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Books API✍📚📃",
+    "description": "API responsible for creating articles",
+    "version": "1.0.0",
+    "contact": {
+      "name": "kledson Costa",
+      "email": "kledsoncrabelo@icloud.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api-books-store.onrender.com",
+      "description": "Render server"
+    },
+    {
+      "url": "http://localhost:3000/api/v1",
+      "description": "local server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Articles",
+      "description": "Articles Routes"
+    }
+  ],
+  "paths": {
+    "/Articles": {
+      "post": {
+        "summary": "Register a articles",
+        "description": "articles registration",
+        "tags": [
+          "Articles"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Articles"
+              },
+              "examples": {
+                "articles": {
+                  "value": {
+                    "nome": "Chapeuzinho Vermeho",
+                    "texto": "Esta tese parte do conceito de reescrita de Lefevere (2007) para, sob uma perspectiva linguística dos estudos da tradução, investigar reescritas de contos de fadas em português do Brasil e em espanhol da Argentina. A tradução é vista por Lefevere como um dos muitos tipos de reescritas, e o tradutor (bem como qualquer outro reescritor) como um intermediário, cujo papel é fundamental dentro do sistema literário de qualquer comunidade. Por se tratar de um corpus de literatura infantil, recorreu-se a Knowles e Malmkjær (1996) que, pressupondo o poder socializante da linguagem, principalmente para as crianças, investigam um corpus de literatura infantil inglesa dos séculos XIX e XX através de referenciais linguísticos para verificar como os autores e textos respaldavam ou afrontavam percepções, crenças e valores da época. Também se recorreu a Levorato (2003), que, com referenciais de estudos linguísticos e metodologias de corpora, examina questões de ideologia, poder, gênero e linguagem em um corpus composto de 12 reescritas em língua inglesa do conto Little Red Riding Hood. Como referência de estudos na área de tradução de literatura infantil, lançou-se mão de trabalhos de autoras como Oittinen, Shavit, Lopéz e Lathey, que partem de generalizações sobre a literatura infantil para chegar a especificidades da literatura infantil traduzida. A maioria destes trabalhos coincide na constatação do caráter educacional que perpassa os textos voltados para crianças e da posição periférica do subsistema da literatura infantil, e mais ainda da literatura infantil traduzida. A presente pesquisa, desenvolvida no escopo do projeto CORDIALL, e em particular, com afiliação ao grupo de pesquisa ESTRAPOLI Estilo de tradutores profissionais e literários, do Laboratório Experimental de Tradução LETRA da FALE/UFMG, investiga a forma como crianças do gênero social feminino são representadas em contos de fadas através da análise da representação (visual) dos atores e da ação social da protagonista de oito reescritas do conto Chapeuzinho Vermelho / Caperucita Roja. Como ferramenta de análise utiliza-se o sistema de categorias sóciosemânticas de van Leeuwen (1996, 2008) para a análise da representação dos atores sociais e da ação social, nos modos semióticos verbal e visual. Ao arcabouço de van Leeuwen foram incorporadas categorias ou modificações propostas para a representação dos atores sociais em Novodvorski e Magalhães (2007) e Assis e Magalhães (2009), pela especificidade do corpus sob análise, composto por textos literários, e pela aplicação de um referencial pensado para a língua inglesa a outras línguas. A análise das representações foi associada a metodologias de corpora, para as quais o uso do software WordSmith Tools é de grande importância nesta pesquisa. Através desta investigação pretendeu-se responder a perguntas sobre as representações propriamente ditas, bem como sobre ideologias que perpassam as práticas sociais representadas nos textos e sobre o status de tradução dos textos inicialmente considerados reescritas, e que se apresentam sob diversas denominações em sua relação com um texto original. Pôde-se observar que em cinco das oito reescritas há um padrão que as aproxima das representações tradicionais dos contos clássicos, tanto em termos de atores quanto de ação social. Assim, pode-se sugerir que as reescritas, ainda que se apresentando com rótulos distintos, em geral se comportam de forma semelhante ao aceitar (e consequentemente atualizar) aportes ideológicos através de representações convencionais. Por fim, percebeu-se que, com o referencial utilizado, não é possível identificar diferenças entre as reescritas que justifiquem as denominações diversas, sendo mais produtivo pensar nas reescritas em termos de um continuum em que os textos poderiam ser localizados em função de sua maior ou menor aproximação, em termos de representações, de um pólo onde estaria(m) situado(s) o conto ao qual, como texto original ou como um (pre)texto, todas as reescritas se vinculam."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Articles"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "summary": "Article search",
+        "description": "list all articles",
+        "tags": [
+          "Articles"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "nome",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "texto",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "artigos": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Articles"
+                      }
+                    },
+                    "limit": {
+                      "type": "number",
+                      "example": 50
+                    },
+                    "total": {
+                      "type": "number",
+                      "example": 100
+                    },
+                    "offset": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "offsets": {
+                      "type": "number",
+                      "example": 20
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description:": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "description:": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Articles/{id}": {
+      "get": {
+        "summary": "Search article by id",
+        "description": "Search only one article",
+        "tags": [
+          "Articles"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Find one article by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Articles"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description:": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "description:": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "update an article",
+        "description": "article updates",
+        "tags": [
+          "Articles"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Articles"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Article successfully updated"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description:": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "description:": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete articles",
+        "description": "exclusion of articles",
+        "tags": [
+          "Articles"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted article"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Articles": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": 1
+          },
+          "nome": {
+            "type": "string",
+            "example": "Joäo e o pé de Jeijäo"
+          },
+          "texto": {
+            "type": "string",
+            "example": "João e o Pé de Feijão é um conto de fadas de origem inglesa. A versão conhecida mais antiga é a de Benjamin Tabart, publicada em 1807 e popularizada por Joseph Jacobs em 1890, com a publicação de English Fairy Tales. A versão de Jacobs é mais comumente publicada atualmente e acredita-se que seja mais próxima e fiel às versões orais do que a de Tabart, porque nesta falta a moral que há naquela."
+          }
+        }
+      },
+      "ArticlesEdit": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": 1
+          },
+          "nome": {
+            "type": "string",
+            "example": "Romeu e julieta"
+          },
+          "texto": {
+            "type": "string",
+            "example": "amor e paixão"
+          }
+        }
+      }
+    }
+  }
+}
