@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const Articles = require('./articlesRouter');
-const Swagger = require('./docs/swaggerRouter');
+const Swagger = require('./swaggerRouter');
 
 module.exports = (server) => {
   server.use((req, res, next) => {
