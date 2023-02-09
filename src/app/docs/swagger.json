@@ -11,8 +11,8 @@
   },
   "servers": [
     {
-      "url": "https://api-books-store.onrender.com",
-      "description": "Render server"
+      "url": "https://nice-gold-fawn-hat.cyclic.app/#/",
+      "description": "Web server"
     },
     {
       "url": "http://localhost:3000/api/v1",
