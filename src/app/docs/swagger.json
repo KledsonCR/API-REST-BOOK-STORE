@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://api-articles-node.cyclic.app/api/v1",
+      "url": "https://api-articles-node.cyclic.app/api/v1/articles",
       "description": "Cyclic server"
     },
     {
