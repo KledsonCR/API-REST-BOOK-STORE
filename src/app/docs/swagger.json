@@ -11,11 +11,11 @@
   },
   "servers": [
     {
-      "url": "https://api-articles-node.cyclic.app",
+      "url": "https://api-articles-node.cyclic.app/api/v1",
       "description": "Cyclic server"
     },
     {
-      "url": "https://api-books-store.onrender.com",
+      "url": "https://api-books-store.onrender.com/api/v1",
       "description": "Render server"
     },
     {
