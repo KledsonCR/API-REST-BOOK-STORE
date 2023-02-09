@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://api-articles-node.cyclic.app/api/v1/articles",
+      "url": "https://api-articles-node.cyclic.app/api/v1",
       "description": "Cyclic server"
     },
     {
@@ -30,7 +30,7 @@
     }
   ],
   "paths": {
-    "/Articles": {
+    "/articles": {
       "post": {
         "summary": "Register a articles",
         "description": "articles registration",
@@ -180,7 +180,7 @@
         }
       }
     },
-    "/Articles/{id}": {
+    "/articles/{id}": {
       "get": {
         "summary": "Search article by id",
         "description": "Search only one article",
