@@ -5,18 +5,19 @@ require('./infra/database/mongo');
 
 class App {
   constructor() {
-    this.server = express();
+    this.express = express();
     this.middlewares();
     this.routes();
   }
 
   middlewares() {
-    this.server.use(cors());
-    this.server.use(express.json());
+    this.express.use(express.urlencoded({ extended: true }));
+    this.express.use(cors());
+    this.express.use(express.json());
   }
   routes() {
-    router(this.server);
+    router(this.express);
   }
 }
 
-module.exports = new App().server;
+module.exports = new App().express;
