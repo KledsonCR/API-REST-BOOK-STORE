@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Books API✍📚📃",
+    "title": "Articles API✍📚📃",
     "description": "API responsible for creating articles",
     "version": "1.0.0",
     "contact": {
@@ -11,8 +11,12 @@
   },
   "servers": [
     {
-      "url": "https://nice-gold-fawn-hat.cyclic.app/#/",
-      "description": "Web server"
+      "url": "https://api-articles-node.cyclic.app/",
+      "description": "Cyclic server"
+    },
+    {
+      "url": "https://api-books-store.onrender.com/",
+      "description": "Render server"
     },
     {
       "url": "http://localhost:3000/api/v1",
